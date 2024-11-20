@@ -1,0 +1,28 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: ¡Transactions Bank!
+servers:
+  - url: http://localhost:8585
+paths:
+  /transactions:
+    get:
+      summary: Transacciones de clientes
+      operationId: transactions
+      tags:
+        - transactions
+      responses:
+        '200':
+          description: Consulta de Transación
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TransactionsResponse"
+components:
+  schemas:
+    TransactionsResponse:
+      required:
+        - text
+      properties:
+        text:
+          type: string

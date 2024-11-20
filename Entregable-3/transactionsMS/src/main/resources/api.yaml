@@ -1,0 +1,64 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: ¡Transactions Bank!
+servers:
+  - url: http://localhost:8585
+paths:
+  /transactions:
+    get:
+      summary: Transacciones de clientes
+      operationId: transactions
+      tags:
+        - transactions
+      responses:
+        '200':
+          description: Consulta de Transacción
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TransactionsResponse"
+components:
+  schemas:
+    TransactionsRequest:
+      type: object
+      properties:
+        id:
+          type: string
+          description: ID único de la transacción
+        type:
+          type: string
+          description: Tipo de transacción;"deposit","withdrawal,"transfer"
+        amount:
+          type: Double
+          description: Monto a depositar,retirar transferir
+        date:
+          type: localDateTime
+          description: Fecha y hora de la transacción
+        sourceAccount:
+          type: String
+          description: Número de cuenta de origen
+        destinationAccount:
+          type: String
+          description: Número de cuenta destino
+    TransactionsResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: ID único de la transacción
+        type:
+          type: string
+          description: Tipo de transacción;"deposit","withdrawal,"transfer"
+        amount:
+          type: Double
+          description: Monto a depositar,retirar transferir
+        date:
+          type: localDateTime
+          description: Fecha y hora de la transacción
+        sourceAccount:
+          type: String
+          description: Número de cuenta de origen
+        destinationAccount:
+          type: String
+          description: Número de cuenta destino
